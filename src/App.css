@@ -1,38 +1,149 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+#root {
+  width: 100vw;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+}
+
+:root {
+  --backgroundText: #070F2B;
+  --HeaderStrokeInner: #9290C3;
+  --FillDrop: #535C91;
+  --FillDisplay: #9290C3;
+  --StrokeDropInnerDisplay: #535C91;
+  --FillDropReset: #C80036;
+  --StrokeInnerReset: #FF6969;
+  --FillDropC: #EB5B00;
+  --StrokeInnerC: #FFB200;
+  --FillDropAction: #F7E7DC;
+  --StrokeInnerAction: #FFD2B1;
+  --FillDropEquals: #508D4E;
+  --StrokeInnerEquals: #80AF81;
+  --LightText: #FFF5E1;
+}
+
+body {
+  height: 100vh;
+  background-color: var(--backgroundText);
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.App {
+  width: 500px;
+  height: 800px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 15px;
+  overflow: hidden;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+nav h1 {
+  font-size: 42px;
+  color: var(--HeaderStrokeInner);
+}
+
+.Display {
+  height: 120px;
+  background-color: var(--FillDisplay);
+  padding: 15px;
+  border: 5px solid var(--StrokeDropInnerDisplay);
+  border-radius: 15px;
+  box-shadow: inset 0 0 10px var(--StrokeDropInnerDisplay),
+              4px 4px 2px 2px var(--StrokeDropInnerDisplay);
+  text-align: right;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  font-size: 48px;
+  font-weight: 500;
+  overflow: hidden;
+}
+
+.content {
+  height: 100%;
+  margin-top: 15px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  gap: 15px;
+}
+
+@media (max-width: 650px) {
+  .App {
+    width: 100%;
+    height: 100%;
   }
-  to {
-    transform: rotate(360deg);
+}
+
+/*
+BUTTONS
+*/
+
+.content button {
+  border-radius: 15px;
+  color: var(--backgroundText);
+  font-size: 48px;
+  font-weight: 500;
+  cursor: pointer;
+
+  &:hover {
+    filter: brightness(120%);
   }
+}
+
+#btn-reset {
+  grid-column: 1 / 3;
+  background-color: var(--FillDropReset);
+  color: var(--LightText);
+  border: 5px solid var(--StrokeInnerReset);
+  box-shadow: inset 0 0 20px var(--StrokeInnerReset),
+              4px 4px 2px 2px var(--FillDropReset);
+}
+
+#btn-c {
+  background-color: var(--FillDropC);
+  color: var(--LightText);
+  border: 5px solid var(--StrokeInnerC);
+  box-shadow: inset 0 0 20px var(--StrokeInnerC),
+              4px 4px 2px 2px var(--FillDropC);
+}
+
+#btn-equals {
+  grid-column: 3 / 5;
+  background-color: var(--FillDropEquals);
+  border: 5px solid var(--StrokeInnerEquals);
+  box-shadow: inset 0 0 20px var(--StrokeInnerEquals),
+              4px 4px 2px 2px var(--FillDropEquals);
+}
+
+.btns-number {
+  background-color: var(--FillDrop);
+  border: 5px solid var(--HeaderStrokeInner);
+  box-shadow: inset 0 0 20px var(--HeaderStrokeInner),
+              4px 4px 2px 2px var(--FillDrop);
+}
+
+.btns-action {
+  background-color: var(--FillDropAction);
+  border: 5px solid var(--StrokeInnerAction);
+  box-shadow: inset 0 0 20px var(--StrokeInnerAction),
+              4px 4px 2px 2px var(--FillDropAction);
+}
+
+@keyframes btn {
+ 50% {
+  box-shadow: none;
+  transform: translate(4px, 4px);
+ }
 }
