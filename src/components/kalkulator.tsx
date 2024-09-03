@@ -32,7 +32,9 @@ export default function Kalkulator() {
     function handleResoult(e: any) {
         toggleAnimation(e);
         if (!isNumber(display.slice(-1))) return;
-        setDisplay(prev => String(eval(prev)));
+        let fixedNumber = String(eval(display)).split(".");
+        if (fixedNumber.length === 1) return setDisplay(fixedNumber[0]);
+        setDisplay(prev => String(parseFloat((eval(prev))).toFixed(2)));
     }
 
     function handleReset(e: any) {
